@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <h1 class="text-center">GET out on the links, {{user.first_name}}!!</h1>
+    <a href="/course" class="btn btn-primary">Courses near you</a>
+    <a href="/logout" class="btn btn-info">Logout</a>
+
+<h3>Upcoming Rounds</h3>
+<div class="row">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Course</th>
+            <th>Holes</th>
+            <th>Tee</th>
+            <th>Date</th>
+            <th>Extras!</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+                <tr>
+                    <td><a href="/show/{{course.id}}">{{course.course}}</a></td>
+                    <td>{{course.hole}}</td>
+                    <td>{{course.tee}}</td>
+                    <td>{{course.date}}</td>
+                    <td>
+                        {% if course.user_id == session.user_id%}
+                        <a href="/edit/{{course.id}}">Edit</a>|
+                        <a href="/destroy/course/{{course.id}}">Get it out of here!</a>|
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/course/new" class="btn btn-primary"> Add a New Course</a>
+</div>
+    <div class="container">
+        <div class="subtitle">
+            <div class="slideshow">
+                <img src="static/images/chevron-left.png" alt="left-arrow" class="left-arrow" onclick="goBack()">
+                <img src="static/images/augusta.jpeg" alt="augusta" style="height: 500px; width: 700px" id="imageclick">
+                <img src="static/images/chevron-left.png" alt="right-arrow" class="right-arrow" onclick="goForward()">
+            </div>
+        </div>
+    </div>
+    <script src="static/js/script.js"></script>
+</body>
+</html>

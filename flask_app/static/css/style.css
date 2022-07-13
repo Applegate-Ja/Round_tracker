@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+.subtitle p {
+    font-weight: bold;
+}
+
+.slideshow {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.left-arrow {
+    height: 20px;
+}
+#imageclick {
+    width: 500px;
+    height: 500px;
+}
+.right-arrow {
+    height: 20px;
+    transform: scaleX(-1);
+}
