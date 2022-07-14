@@ -14,7 +14,8 @@ def get_all():
         "id": session['user_id']
     }
 
-    return render_template('dashboard.html', user=User.get_by_id(data), courses=Course.get_all())
+    courses = Course.merges()
+    return render_template('dashboard.html', user=User.get_by_id(data), courses=courses)
 
 
 @app.route('/course/new')
@@ -125,4 +126,4 @@ def get_data():
     }
     response = requests.request("GET", url, headers=headers, params=params).json()
     print(response)
-    return render_template("results.html", course_data = response["courses"])
+    return render_template("results.html", course_data=response["courses"])

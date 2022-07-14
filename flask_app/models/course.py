@@ -46,7 +46,6 @@ class Course:
     @classmethod
     def update(cls, data):
         query = "UPDATE courses SET course=%(course)s, hole=%(hole)s, tee=%(tee)s, date=%(date)s, updated_at=NOW() WHERE id = %(id)s;"
-        pprint("success")
         return connectToMySQL(cls.db_name).query_db(query, data)
 
     @classmethod
@@ -55,7 +54,7 @@ class Course:
         return connectToMySQL(cls.db_name).query_db(query, data)
 
     @classmethod
-    def merge(cls,data):
+    def merge(cls, data):
         query = "SELECT * FROM courses JOIN users ON users.id = courses.user_id WHERE courses.id = %(id)s;"
         results = connectToMySQL(cls.db_name).query_db(query, data)
         pprint(results)
@@ -73,10 +72,18 @@ class Course:
         course.user = this_user
         return course
 
-#     @classmethod
-#     def save2(cls, data):
-#         query = "INSERT INTO details (latitude,longitude,radius) VALUES(%(latitude)s,%(longitude)s,%(radius)s)"
-#         return connectToMySQL(cls.db_name).query_db(query, data)
+    @classmethod
+    def merges(cls):
+        query = "SELECT * FROM users JOIN courses ON users.id = courses.user_id;"
+        results = connectToMySQL(cls.db_name).query_db(query)
+        courses = []
+        print(courses)
+        for row in results:
+            user = User(row)
+            course = cls(row)
+            course.user = user
+            courses.append(course)
+        return courses
 
     @staticmethod
     def validate_course(courses):

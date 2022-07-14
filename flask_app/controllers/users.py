@@ -50,7 +50,8 @@ def dashboard():
     data ={
         'id': session['user_id']
     }
-    return render_template("dashboard.html",user=User.get_by_id(data),courses=Course.get_all())
+    courses = Course.merges()
+    return render_template("dashboard.html",user=User.get_by_id(data), courses=courses)
 
 
 @app.route('/logout')
