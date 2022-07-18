@@ -77,7 +77,7 @@ class Course:
         query = "SELECT * FROM users JOIN courses ON users.id = courses.user_id;"
         results = connectToMySQL(cls.db_name).query_db(query)
         courses = []
-        print(courses)
+        pprint(results)
         for row in results:
             user = User(row)
             course = cls(row)

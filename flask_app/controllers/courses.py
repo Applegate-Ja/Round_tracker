@@ -14,7 +14,7 @@ def get_all():
         "id": session['user_id']
     }
 
-    courses = Course.merges()
+    courses = Course.get_all()
     return render_template('dashboard.html', user=User.get_by_id(data), courses=courses)
 
 

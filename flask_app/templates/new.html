@@ -10,17 +10,15 @@
     <title>Add Course</title>
 </head>
 <body>
-<nav class="d-flex justify-content-between align-items-end col-50">
-    <div class="d-flex col-4 justify-content-end">
+<nav>
+    <div class="d-flex col-11  justify-content-end">
         <a href="/dashboard" class="btn btn-info">Round Overview</a>
         <a href="/logout" class="btn btn-info">Logout</a>
     </div>
 
 </nav>
-<div class="row">
-    <h1>Add your upcoming rounds here</h1>
-</div>
-<form action="/new" method="post">
+<form action="/new" method="post" class="col-8 p-4 my-4 bg-dark text-light mx-auto">
+    <h2 class="text-center">Add your upcoming round here!</h2>
     <div class="form-group row">
         <label for="course" class="form-label">Course:</label>
         <input type="text" name="course" class="form_control">
