@@ -2,7 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 from .user import User
 from pprint import pprint
-from datetime import datetime
+from datetime import date, datetime, timedelta
 
 
 class Course:
@@ -86,8 +86,11 @@ class Course:
             courses.append(course)
         return courses
 
+
     @staticmethod
     def validate_course(courses):
+        # today = date.today()
+        # past = courses['date']
         is_valid = True
         if len(courses['course']) < 3:
             is_valid = False
@@ -98,7 +101,7 @@ class Course:
         if len(courses['tee']) < 3:
             is_valid = False
             flash("Tees must be atleast 3 characters", "courses")
-        if courses['date'] < datetime.now():
-            is_valid = False
-            flash("Date can not be in the past. Please revise")
+        # if past < today:
+        #     is_valid = False
+        #     flash("Date can not be in the past. Please revise")
         return is_valid
