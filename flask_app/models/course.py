@@ -90,11 +90,11 @@ class Course:
         is_valid = True
         if len(courses['course']) < 3:
             is_valid = False
-            flash("Course must be at least 5 characters", "courses")
+            flash("Course must be at least 3 characters", "courses")
         if len(courses['hole']) < 1:
             is_valid = False
-            flash("Score must be atleast 2 characters", "courses")
-        if len(courses['tee']) < 4:
+            flash("Hole must be atleast 1 characters", "courses")
+        if len(courses['tee']) < 3:
             is_valid = False
             flash("Tees must be atleast 3 characters", "courses")
         return is_valid
