@@ -12,14 +12,14 @@
 <nav>
     <div class="d-flex col-11  justify-content-end">
         <a href="/dashboard" class="btn btn-primary">Round Overview</a>
-        <a href="/logout" class="btn btn-info">Logout</a>
+        <a href="/logout" class="btn btn-danger">Logout</a>
     </div>
 
 </nav>
 <div class="row">
 
 </div>
-<form action="/update/course" method="post" class="col-11 p-4 my-4 bg-dark text-light mx-auto">
+<form action="/update/course" method="post" class="col-9 p-4 my-4 bg-dark text-light mx-auto">
     {% with messages = get_flashed_messages(category_filter=['recipe']) %}
     {% if messages %}
     <div class="alert alert-danger" role="alert">
@@ -32,7 +32,7 @@
     {% endwith %}
     <input type="hidden" name="id" value={{edit.id}}>
     <form action="/update/course" method="post">
-        <h2 class="text-center">Edit your {{edit.course}} round</h2>
+        <h2 class="text-center">Edit your round at <b><span class="text-primary">{{edit.course}}</span></b> </h2>
     <div class="form-group row">
         <label for="course" class="form-label">Course:</label>
         <input type="text" name="course" class="form_control" value="{{edit.course}}">
