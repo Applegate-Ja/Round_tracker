@@ -86,11 +86,12 @@ class Course:
             courses.append(course)
         return courses
 
-
     @staticmethod
     def validate_course(courses):
-        # today = date.today()
-        # past = courses['date']
+        # query = "SELECT CONVERT("courses.date", DATE)";
+        # results = connectToMySQL(cls.db_name).query_db(query)
+        today = date.today()
+        print(type(today))
         is_valid = True
         if len(courses['course']) < 3:
             is_valid = False
@@ -101,7 +102,7 @@ class Course:
         if len(courses['tee']) < 3:
             is_valid = False
             flash("Tees must be atleast 3 characters", "courses")
-        # if past < today:
+        # if results < today:
         #     is_valid = False
         #     flash("Date can not be in the past. Please revise")
         return is_valid
