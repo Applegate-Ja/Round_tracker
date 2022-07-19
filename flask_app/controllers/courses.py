@@ -63,7 +63,7 @@ def update_course():
     if 'user_id' not in session:
         return redirect('/logout')
     if not Course.validate_course(request.form):
-        return redirect('/new')
+        return redirect('/course/new')
     data = {
         "course": request.form["course"],
         "hole": request.form["hole"],

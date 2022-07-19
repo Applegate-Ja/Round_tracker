@@ -19,6 +19,16 @@
 </nav>
 <form action="/new" method="post" class="col-8 p-4 my-4 bg-dark text-light mx-auto">
     <h2 class="text-center">Add your upcoming round here!</h2>
+    {% with messages = get_flashed_messages(category_filter=['courses']) %}
+        {% if messages %}
+        <div class="alert alert-danger" role="alert">
+            <strong>Flash AHHHHHHH!!!!</strong>
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
     <div class="form-group row">
         <label for="course" class="form-label">Course:</label>
         <input type="text" name="course" class="form_control">
